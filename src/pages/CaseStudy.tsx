@@ -7,6 +7,7 @@ import { getProjectBySlug } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Chip } from "@/components/ui/Chip";
 import { Button } from "@/components/ui/Button";
+import { TorusKnot3D } from "@/components/three/TorusKnot3D";
 
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
@@ -45,8 +46,10 @@ export default function CaseStudy() {
   };
 
   return (
-    <article className="pt-32 md:pt-40">
+    <article className="relative isolate pt-32 md:pt-40">
       {/* Hero */}
+      <TorusKnot3D className="-right-24 -top-10 h-[24rem] w-[24rem] opacity-40" speed={0.4} />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-bg via-bg/60 to-transparent" />
       <Container>
         <motion.div initial={fade.initial} animate={{ opacity: 1, y: 0 }} transition={fade.transition}>
           <Link

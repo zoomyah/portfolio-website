@@ -6,6 +6,7 @@ import { t } from "@/i18n/strings";
 import { submitContact, isFormspreeConfigured } from "@/utils/contact";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { WireframeGlobe } from "@/components/three/WireframeGlobe";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -51,7 +52,9 @@ export default function Contact() {
         </Container>
       </section>
 
-      <section className="pb-24">
+      <section className="relative isolate overflow-hidden pb-24">
+        <WireframeGlobe className="-right-32 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 opacity-25" opacity={0.5} />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-bg via-bg/80 to-bg/20" />
         <Container>
           <div className="grid gap-16 md:grid-cols-12">
             <motion.form

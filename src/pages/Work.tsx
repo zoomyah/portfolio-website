@@ -19,8 +19,11 @@ export default function Work() {
   );
 
   return (
-    <div className="pt-32 md:pt-40">
-      <section className="pb-16">
+    <div className="relative isolate pt-32 md:pt-40">
+      <section className="relative pb-16">
+        <div aria-hidden="true" className="pointer-events-none absolute right-8 top-0 hidden h-16 w-16 md:block [transform-style:preserve-3d]">
+          <div className="animate-float-spin h-full w-full rotate-45 border border-accent/50 bg-accent/5" />
+        </div>
         <Container>
           <SectionHeading
             eyebrowKey="workEyebrow"

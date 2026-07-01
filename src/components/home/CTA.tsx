@@ -11,7 +11,7 @@ export function CTA() {
 
   return (
     <section className="relative isolate overflow-hidden py-24 md:py-40 border-t border-edge/10">
-      <Section3DAccent className="-right-24 top-1/2 hidden -translate-y-1/2 h-[26rem] w-[26rem] opacity-40 md:block" />
+      <Section3DAccent className="-right-32 top-1/2 hidden -translate-y-1/2 h-[32rem] w-[32rem] opacity-50 md:block" />
       <Container size="prose" className="relative text-center flex flex-col items-center">
         <motion.span
           initial={reduce ? false : { opacity: 0 }}

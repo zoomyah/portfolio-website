@@ -59,6 +59,9 @@ export function WorkPreview() {
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent" />
+                  <div aria-hidden="true" className="pointer-events-none absolute right-5 top-5 z-10 h-9 w-9 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [transform-style:preserve-3d]">
+                    <div className="animate-float-spin h-full w-full rotate-45 border border-accent/70 bg-accent/10 backdrop-blur-sm" />
+                  </div>
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                     <div className="flex items-center gap-3">
                       <span className="font-mono text-xs uppercase tracking-eyebrow text-accent">

@@ -36,7 +36,8 @@ export default function Post() {
   );
 
   return (
-    <article className="pt-32 md:pt-40">
+    <article className="relative isolate pt-32 md:pt-40">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-bg/30" />
       <Container size="prose">
         <Link
           to="/blog"

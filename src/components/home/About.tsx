@@ -3,6 +3,7 @@ import { useUiStore } from "@/store/useUiStore";
 import { t } from "@/i18n/strings";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { WireframeGlobe } from "@/components/three/WireframeGlobe";
 
 const skills = [
   ["React", "TypeScript"],
@@ -22,7 +23,9 @@ export function About() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="py-24 md:py-32 border-t border-edge/10">
+    <section className="relative isolate overflow-hidden py-24 md:py-32 border-t border-edge/10">
+      <WireframeGlobe className="-right-40 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 opacity-30 md:opacity-40" opacity={0.5} />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-bg via-bg/60 to-transparent" />
       <Container>
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5">

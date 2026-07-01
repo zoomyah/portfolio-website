@@ -39,8 +39,10 @@ export function ServicesPreview() {
                 className="group bg-bg p-8 md:p-10 transition-colors duration-500 hover:bg-surface/60"
               >
                 <div className="flex items-start justify-between">
-                  <div className="h-11 w-11 inline-flex items-center justify-center border border-edge/20 text-accent transition-transform duration-500 group-hover:-translate-y-0.5">
-                    <Icon size={18} strokeWidth={1.25} />
+                  <div className="[perspective:800px]">
+                    <div className="h-11 w-11 inline-flex items-center justify-center border border-edge/20 text-accent transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(22deg)_rotateX(-12deg)_translateZ(8px)]">
+                      <Icon size={18} strokeWidth={1.25} />
+                    </div>
                   </div>
                   <span className="font-mono text-xs text-muted">
                     {String(i + 1).padStart(2, "0")}
