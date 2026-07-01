@@ -3,14 +3,16 @@ import { useUiStore } from "@/store/useUiStore";
 import { t } from "@/i18n/strings";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Section3DAccent } from "@/components/three/Section3DAccent";
 
 export function CTA() {
   const locale = useUiStore((s) => s.locale);
   const reduce = useReducedMotion();
 
   return (
-    <section className="py-24 md:py-40 border-t border-edge/10">
-      <Container size="prose" className="text-center flex flex-col items-center">
+    <section className="relative isolate overflow-hidden py-24 md:py-40 border-t border-edge/10">
+      <Section3DAccent className="-right-24 top-1/2 hidden -translate-y-1/2 h-[26rem] w-[26rem] opacity-40 md:block" />
+      <Container size="prose" className="relative text-center flex flex-col items-center">
         <motion.span
           initial={reduce ? false : { opacity: 0 }}
           whileInView={{ opacity: 1 }}

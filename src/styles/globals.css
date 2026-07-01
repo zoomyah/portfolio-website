@@ -54,7 +54,7 @@
     letter-spacing: -0.02em;
   }
 
-  /* Subtle grid-gradient background */
+  /* Subtle grid-gradient background (dimmed to avoid clashing with 3D scene) */
   body::before {
     content: "";
     position: fixed;
@@ -62,9 +62,9 @@
     z-index: -2;
     pointer-events: none;
     background-image:
-      radial-gradient(60% 50% at 15% 0%, rgb(var(--accent) / 0.06), transparent 70%),
-      linear-gradient(to right, rgb(var(--edge) / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(var(--edge) / 0.05) 1px, transparent 1px);
+      radial-gradient(60% 50% at 15% 0%, rgb(var(--accent) / 0.03), transparent 70%),
+      linear-gradient(to right, rgb(var(--edge) / 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--edge) / 0.025) 1px, transparent 1px);
     background-size: 100% 100%, 64px 64px, 64px 64px;
     background-position: 0 0, -1px -1px, -1px -1px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);

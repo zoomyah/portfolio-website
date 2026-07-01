@@ -4,6 +4,7 @@ import { useUiStore } from "@/store/useUiStore";
 import { t } from "@/i18n/strings";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Hero3DScene } from "@/components/three/Hero3DScene";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -23,7 +24,13 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-40 pb-24 md:pt-52 md:pb-32">
+    <section className="relative isolate overflow-hidden pt-40 pb-24 md:pt-52 md:pb-32">
+      <Hero3DScene />
+      {/* Gradient overlay: above the 3D scene, below the text for legibility */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-bg/60 via-transparent to-bg"
+      />
       <Container>
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div variants={item} className="eyebrow flex items-center gap-3">
