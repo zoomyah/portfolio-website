@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Editorial-Technical Dark — design tokens
+   Default theme is DARK (html has .dark class).
+   Light theme activates when .dark is removed from <html>.
+   ============================================================ */
+:root {
+  /* Light theme */
+  --bg: 245 242 234;          /* #F5F2EA cream */
+  --surface: 255 255 255;     /* #FFFFFF */
+  --ink: 26 26 26;            /* #1A1A1A */
+  --muted: 107 107 102;       /* #6B6B66 */
+  --accent: 201 162 39;       /* #C9A227 gold */
+  --edge: 0 0 0;              /* borders -> rgba(0,0,0,~0.08) */
+}
+
+.dark {
+  /* Dark theme (default) */
+  --bg: 11 11 12;             /* #0B0B0C */
+  --surface: 20 20 22;        /* #141416 */
+  --ink: 237 234 227;         /* #EDEAE3 warm white */
+  --muted: 138 138 133;       /* #8A8A85 */
+  --accent: 201 162 39;       /* #C9A227 */
+  --edge: 237 234 227;        /* borders -> rgba(237,234,227,~0.08) */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: theme("fontFamily.sans");
+    font-feature-settings: "ss01", "cv01";
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent));
+    color: #0B0B0C;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: theme("fontFamily.display");
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* Subtle grid-gradient background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      radial-gradient(60% 50% at 15% 0%, rgb(var(--accent) / 0.06), transparent 70%),
+      linear-gradient(to right, rgb(var(--edge) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--edge) / 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 64px 64px, 64px 64px;
+    background-position: 0 0, -1px -1px, -1px -1px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: theme("fontFamily.mono");
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: theme("letterSpacing.eyebrow");
+    color: rgb(var(--muted));
+  }
+
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* underline-style form inputs */
+  .input-underline {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(var(--edge) / 0.18);
+    padding: 0.75rem 0.25rem;
+    color: rgb(var(--ink));
+    font-family: theme("fontFamily.sans");
+    transition: border-color 0.3s ease;
+  }
+  .input-underline::placeholder {
+    color: rgb(var(--muted) / 0.6);
+  }
+  .input-underline:focus {
+    outline: none;
+    border-bottom-color: rgb(var(--accent));
+  }
+
+  /* MDX prose */
+  .prose-editorial {
+    color: rgb(var(--ink) / 0.92);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-editorial h2,
+  .prose-editorial h3 {
+    font-family: theme("fontFamily.display");
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .prose-editorial h2 { font-size: 1.75rem; }
+  .prose-editorial h3 { font-size: 1.3rem; }
+  .prose-editorial p { margin: 1.1rem 0; }
+  .prose-editorial a {
+    color: rgb(var(--accent));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-editorial blockquote {
+    border-left: 2px solid rgb(var(--accent));
+    padding-left: 1.25rem;
+    font-family: theme("fontFamily.display");
+    font-style: italic;
+    color: rgb(var(--ink));
+    margin: 1.5rem 0;
+  }
+  .prose-editorial ul,
+  .prose-editorial ol {
+    margin: 1.1rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose-editorial li { margin: 0.4rem 0; }
+  .prose-editorial code:not(pre code) {
+    font-family: theme("fontFamily.mono");
+    font-size: 0.9em;
+    background: rgb(var(--edge) / 0.1);
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+  }
+  .prose-editorial pre {
+    background: rgb(var(--surface)) !important;
+    border: 1px solid rgb(var(--edge) / 0.1);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .prose-editorial pre code {
+    font-family: theme("fontFamily.mono");
+    background: transparent !important;
+  }
+}
+
+/* Film-grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* rehype-highlight (github-dark-ish) tuned for our palette */
+.hljs { color: rgb(var(--ink)); }
+.hljs-comment, .hljs-quote { color: rgb(var(--muted)); font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-link {
+  color: #d4a043;
+}
+.hljs-string, .hljs-attr, .hljs-template-tag, .hljs-addition {
+  color: #9fb87a;
+}
+.hljs-title, .hljs-name, .hljs-type, .hljs-attribute, .hljs-symbol,
+.hljs-bullet, .hljs-built_in, .hljs-meta, .hljs-number, .hljs-variable {
+  color: #c9b08a;
+}
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

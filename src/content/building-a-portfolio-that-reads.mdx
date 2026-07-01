@@ -1,0 +1,46 @@
+export const frontmatter = {
+  slug: "building-a-portfolio-that-reads",
+  title: "Building a portfolio that reads.",
+  date: "2025-11-12",
+  excerpt:
+    "Most engineer portfolios are evidence of effort. The good ones are evidence of taste. Notes on the editorial-technical direction behind this site.",
+  cover:
+    "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=open%20laptop%20with%20code%20on%20screen%20in%20a%20dark%20room%20lit%20by%20a%20warm%20desk%20lamp%2C%20moody%20editorial%20photography%2C%20golden%20highlights&image_size=landscape_16_9",
+  readingTime: 6,
+};
+
+A recruiter spends roughly six seconds on your portfolio before deciding whether to keep reading. Six seconds is not enough to evaluate a project — it is barely enough to evaluate a *page*. So the page has to make a single, fast argument: *this person has taste, and they have shipped*.
+
+## The two failure modes
+
+Engineering portfolios tend to fail in one of two directions.
+
+The first is the **evidence folder**: a wall of links, a tag soup of technologies, screenshots pasted without rhythm. It is honest but unreadable. It asks the visitor to do the work the engineer should have done.
+
+The second is the **landing page**: glossy, animated, indistinguishable from a SaaS homepage. It signals that the engineer can install a template. It does not signal that they can build.
+
+The middle path — the one I wanted for this site — is **editorial**. Quiet, confident, paced like a magazine spread. Negative space as a tool, not an absence.
+
+## The decisions that matter
+
+The aesthetic direction here is *Editorial-Technical Dark*. A near-black charcoal background instead of the obligatory purple gradient. A single gold accent. A variable serif (Fraunces) for display, paired with a humanist sans (Manrope) for body, and a monospace (JetBrains Mono) for the technical eyebrows that label each section.
+
+> Restraint is not the absence of detail. It is the presence of the *right* details.
+
+The film grain, the faint grid, the asymmetric layout — they exist to suggest that someone made choices. Because that is the actual product on display here: *the ability to make choices*.
+
+## What I left out
+
+I left out a testimonials carousel, a logo strip, and a hero with a particle animation. Not because they are wrong, but because they are loud, and this page is trying to be calm. The loudest thing here is the headline, and that is by design.
+
+If a recruiter leaves this site thinking "I want to read one more page", the portfolio has done its job.
+
+```ts
+// the entire nav contract — small is a feature
+export interface NavItem {
+  label: string;
+  href: string;
+}
+```
+
+Small contracts. Quiet systems. The portfolio is the argument.
